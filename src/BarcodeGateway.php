@@ -3,14 +3,15 @@
  * Created by PhpStorm.
  * User: Jaeger <JaegerCode@gmail.com>
  * Date: 2017/12/6
- * Time: 下午2:50
+ * Time: 下午5:17
  */
 
 namespace Omnipay\GlobalAlipay;
 
+
 use Omnipay\Common\AbstractGateway;
 
-class QrcodeGateway extends AbstractGateway
+class BarcodeGateway extends AbstractGateway
 {
     /**
      * Get gateway display name
@@ -19,31 +20,8 @@ class QrcodeGateway extends AbstractGateway
      */
     public function getName()
     {
-        return 'Global Alipay QRCode gateway';
+        return 'Global Alipay Barcode gateway';
     }
-
-    public function getInputCharset()
-    {
-        return $this->getParameter('input_charset');
-    }
-
-
-    public function setInputCharset($value)
-    {
-        return $this->setParameter('input_charset', $value);
-    }
-
-    public function getKey()
-    {
-        return $this->getParameter('key');
-    }
-
-
-    public function setKey($value)
-    {
-        return $this->setParameter('key', $value);
-    }
-
 
     public function getEnvironment()
     {
@@ -56,6 +34,17 @@ class QrcodeGateway extends AbstractGateway
         return $this->setParameter('environment', $value);
     }
 
+
+    public function setKey($value)
+    {
+        return $this->setParameter('key', $value);
+    }
+
+
+    public function getKey()
+    {
+        return $this->getParameter('key');
+    }
 
 
     public function getPartner()
@@ -70,18 +59,6 @@ class QrcodeGateway extends AbstractGateway
     }
 
 
-    public function getNotifyUrl()
-    {
-        return $this->getParameter('notify_url');
-    }
-
-
-    public function setNotifyUrl($value)
-    {
-        return $this->setParameter('notify_url', $value);
-    }
-
-
     public function getSignType()
     {
         return $this->getParameter('sign_type');
@@ -93,22 +70,21 @@ class QrcodeGateway extends AbstractGateway
         return $this->setParameter('sign_type', $value);
     }
 
-
-    public function getTimestamp()
+    public function getInputCharset()
     {
-        return $this->getParameter('timestamp');
+        return $this->getParameter('input_charset');
     }
 
 
-    public function setTimestamp($value)
+    public function setInputCharset($value)
     {
-        return $this->setParameter('timestamp', $value);
+        return $this->setParameter('input_charset', $value);
     }
 
 
     public function purchase(array $parameters = array())
     {
-        return $this->createRequest('\Omnipay\GlobalAlipay\Message\QrcodePurchaseRequest', $parameters);
+        return $this->createRequest('\Omnipay\GlobalAlipay\Message\BarcodePurchaseRequest', $parameters);
     }
 
 
@@ -116,5 +92,4 @@ class QrcodeGateway extends AbstractGateway
     {
         return $this->createRequest('\Omnipay\GlobalAlipay\Message\CompletePurchaseRequest', $parameters);
     }
-
 }
